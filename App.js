@@ -5,6 +5,7 @@ import {
     StyleSheet,
     View,
     StatusBar,
+    ScrollView,
 } from "react-native";
 import tailwind from "tailwind-rn";
 import Card from "./components/Card";
@@ -39,32 +40,40 @@ export default function App() {
             <SafeAreaView>
                 <View style={tailwind("pt-10")}>
                     <Header />
-                    <View style={tailwind("flex flex p-4 w-full")}>
-                        <Card
-                            label={"Confirmed"}
-                            color={"bg-gray-500"}
-                            textColor={"indigo"}
-                            data={data.cases}
-                        />
-                        <Card
-                            label={"Deaths"}
-                            color={"bg-gray-600"}
-                            textColor={"red"}
-                            data={data.deaths}
-                        />
-                        <Card
-                            label={"Recovered"}
-                            color={"bg-gray-700"}
-                            textColor={"green"}
-                            data={data.recovered}
-                        />
-                        <Card
-                            label={"Cases Today"}
-                            color={"bg-gray-800"}
-                            textColor={"green"}
-                            data={data.todayCases}
-                        />
-                    </View>
+                    <ScrollView>
+                        <View style={tailwind("flex flex p-4 w-full")}>
+                            <Card
+                                label={"Confirmed"}
+                                color={"bg-gray-500"}
+                                textColor={"indigo"}
+                                data={data.cases}
+                            />
+                            <Card
+                                label={"Deaths"}
+                                color={"bg-gray-600"}
+                                textColor={"red"}
+                                data={data.deaths}
+                            />
+                            <Card
+                                label={"Recovered"}
+                                color={"bg-gray-700"}
+                                textColor={"green"}
+                                data={data.recovered}
+                            />
+                            <Card
+                                label={"Cases Today"}
+                                color={"bg-gray-800"}
+                                textColor={"purple"}
+                                data={data.todayCases}
+                            />
+                            <Card
+                                label={"Cases Today"}
+                                color={"bg-gray-800"}
+                                textColor={"purple"}
+                                data={data.todayCases}
+                            />
+                        </View>
+                    </ScrollView>
                 </View>
             </SafeAreaView>
         </ImageBackground>
