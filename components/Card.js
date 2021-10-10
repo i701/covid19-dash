@@ -24,6 +24,7 @@ const Card = (props) => {
         }
         return n.toString();
     }
+
     return (
         <View
             style={tailwind(
@@ -42,8 +43,6 @@ const Card = (props) => {
                     `font-bold text-2xl text-${props.textColor}-100`
                 )}
             >
-                {/* <NumericLabel params={params}>`${props.data}`</NumericLabel> */}
-                {/* {props.data.toLocaleString("en")} */}
                 {formatNumber(props.data)}
             </Text>
         </View>
