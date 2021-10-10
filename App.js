@@ -76,9 +76,6 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%",
     },
-    card: {
-        borderColor: "red",
-    },
     image: {
         height: 30,
     },
