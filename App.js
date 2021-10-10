@@ -41,25 +41,25 @@ export default function App() {
                     <Header />
                     <View style={tailwind("flex flex p-4 w-full")}>
                         <Card
-                            label={"Confirmed ✅"}
+                            label={"Confirmed"}
                             color={"bg-gray-500"}
                             textColor={"indigo"}
                             data={data.cases}
                         />
                         <Card
-                            label={"Deaths ☠"}
+                            label={"Deaths"}
                             color={"bg-gray-600"}
                             textColor={"red"}
                             data={data.deaths}
                         />
                         <Card
-                            label={"Recovered 😄"}
+                            label={"Recovered"}
                             color={"bg-gray-700"}
                             textColor={"green"}
                             data={data.recovered}
                         />
                         <Card
-                            label={"Cases Today 📅"}
+                            label={"Cases Today"}
                             color={"bg-gray-800"}
                             textColor={"green"}
                             data={data.todayCases}
