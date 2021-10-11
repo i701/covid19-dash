@@ -13,6 +13,7 @@ import Header from "./components/Header";
 
 export default function App() {
     const [data, setData] = useState("");
+    const [flag, setFlag] = useState("");
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("maldives");
     const [items, setItems] = useState([
@@ -26,6 +27,7 @@ export default function App() {
             .then((response) => response.json())
             .then((response) => {
                 setData(response);
+                setFlag(response.countryInfo.flag);
             })
             .catch((err) => {
                 console.log(err);
@@ -46,7 +48,7 @@ export default function App() {
             />
             <SafeAreaView>
                 <View style={tailwind("pt-10")}>
-                    <Header flag={data.countryInfo.flag} />
+                    <Header flag={flag} />
                     {/* <Header flag="https://disease.sh/assets/img/flags/mv.png" /> */}
                     <View
                         style={[

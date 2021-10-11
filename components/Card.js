@@ -2,23 +2,16 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import tailwind from "tailwind-rn";
 import formatNumber from "../assets/helpers/FormatNumber";
-import {
-    useFonts,
-    FiraCode_300Light,
-    FiraCode_400Regular,
-    FiraCode_500Medium,
-    FiraCode_600SemiBold,
-    FiraCode_700Bold,
-} from "@expo-google-fonts/fira-code";
+import { useFonts } from "expo-font";
 
 const Card = (props) => {
     let [fontsLoaded] = useFonts({
-        FiraCode_300Light,
-        FiraCode_400Regular,
-        FiraCode_500Medium,
-        FiraCode_600SemiBold,
-        FiraCode_700Bold,
+        FiraCode: require("../assets/fonts/FiraCode-Medium.ttf"),
     });
+
+    if (!fontsLoaded) {
+        return null;
+    }
     return (
         <View style={[tailwind(`${props.color}`), styles.card]}>
             <Text

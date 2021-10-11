@@ -1,29 +1,22 @@
 import React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 import tailwind from "tailwind-rn";
-import {
-    useFonts,
-    FiraCode_300Light,
-    FiraCode_400Regular,
-    FiraCode_500Medium,
-    FiraCode_600SemiBold,
-    FiraCode_700Bold,
-} from "@expo-google-fonts/fira-code";
+import { useFonts } from "expo-font";
+import { AppLoading } from "expo";
 
 const Header = ({ flag }) => {
     let [fontsLoaded] = useFonts({
-        FiraCode_300Light,
-        FiraCode_400Regular,
-        FiraCode_500Medium,
-        FiraCode_600SemiBold,
-        FiraCode_700Bold,
+        FiraCode: require("../assets/fonts/FiraCode-Medium.ttf"),
     });
+    if (!fontsLoaded) {
+        return null;
+    }
     return (
         <View style={tailwind("flex-row flex justify-around items-center")}>
             <Text
                 style={[
                     tailwind("font-bold text-3xl text-white"),
-                    { fontFamily: "FiraCode_500Medium" },
+                    { fontFamily: "FiraCode" },
                 ]}
             >
                 Covid-19 Dashboard
