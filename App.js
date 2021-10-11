@@ -66,12 +66,6 @@ export default function App() {
                                 textColor={"purple"}
                                 data={data.todayCases}
                             />
-                            <Card
-                                label={"Cases Today"}
-                                color={"bg-gray-800"}
-                                textColor={"purple"}
-                                data={data.todayCases}
-                            />
                         </View>
                     </ScrollView>
                 </View>
