@@ -8,7 +8,6 @@ const Card = (props) => {
     let [fontsLoaded] = useFonts({
         FiraCode: require("../assets/fonts/FiraCode-Medium.ttf"),
     });
-
     if (!fontsLoaded) {
         return null;
     }
@@ -17,7 +16,7 @@ const Card = (props) => {
             <Text
                 style={[
                     tailwind("text-gray-800 text-xl text-gray-50 font-medium"),
-                    { fontFamily: "FiraCode_500Medium" },
+                    { fontFamily: "FiraCode" },
                 ]}
             >
                 {props.label}
@@ -25,7 +24,7 @@ const Card = (props) => {
             <Text
                 style={[
                     tailwind(`font-bold text-2xl text-${props.textColor}-100`),
-                    { fontFamily: "FiraCode_500Medium" },
+                    { fontFamily: "FiraCode" },
                 ]}
             >
                 {formatNumber(props.data)}

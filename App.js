@@ -5,34 +5,44 @@ import {
     StyleSheet,
     View,
     StatusBar,
+    TouchableOpacity,
+    KeyboardAvoidingView,
 } from "react-native";
-import DropDownPicker from "react-native-dropdown-picker";
+import { TextInput } from "react-native-paper";
+
 import tailwind from "tailwind-rn";
 import Card from "./components/Card";
 import Header from "./components/Header";
+import { useFonts } from "expo-font";
 
 export default function App() {
     const [data, setData] = useState("");
     const [flag, setFlag] = useState("");
-    const [open, setOpen] = useState(false);
     const [value, setValue] = useState("maldives");
-    const [items, setItems] = useState([
-        { label: "Maldives", value: "maldives" },
-        { label: "USA", value: "usa" },
-        { label: "India", value: "india" },
-    ]);
-
+    const [text, setText] = useState("");
     useEffect(() => {
         fetch(`https://disease.sh/v3/covid-19/countries/${value}`)
             .then((response) => response.json())
             .then((response) => {
                 setData(response);
-                setFlag(response.countryInfo.flag);
+                const flag = response.countryInfo.flag;
+                if (flag) {
+                    setFlag(response.countryInfo.flag);
+                } else {
+                    flag = null;
+                }
             })
             .catch((err) => {
                 console.log(err);
             });
     }, [value]);
+
+    let [fontsLoaded] = useFonts({
+        FiraCode: require("./assets/fonts/FiraCode-Medium.ttf"),
+    });
+    if (!fontsLoaded) {
+        return null;
+    }
 
     return (
         <ImageBackground
@@ -90,32 +100,31 @@ export default function App() {
                             label={"Critical"}
                             color={"bg-gray-700"}
                             textColor={"red"}
-                            data={data.active}
+                            data={data.critical}
                         />
+                    </View>
+                    <View style={tailwind("pl-5 pr-5")}>
+                        <KeyboardAvoidingView>
+                            <TextInput
+                                style={[
+                                    tailwind(
+                                        "text-white text-lg justify-start"
+                                    ),
+                                    styles.input,
+                                    { fontFamily: "FiraCode" },
+                                ]}
+                                value={value}
+                                onChangeText={(value) => {
+                                    value.toLowerCase();
+                                    setValue(value);
+                                    console.log(value);
+                                }}
+                                mode={"outlined"}
+                            />
+                        </KeyboardAvoidingView>
                     </View>
                 </View>
             </SafeAreaView>
-            <View style={styles.dropdown}>
-                <DropDownPicker
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                    setItems={setItems}
-                    onChangeValue={(value) => {
-                        console.log(value);
-                        console.log(data.countryInfo.flag);
-                    }}
-                    style={{
-                        backgroundColor: "#6b7280",
-                        color: "white",
-                    }}
-                    textStyle={{
-                        fontSize: 15,
-                    }}
-                />
-            </View>
         </ImageBackground>
     );
 }
@@ -127,6 +136,5 @@ const styles = StyleSheet.create({
     },
     dropdown: {
         paddingHorizontal: 20,
-        paddingTop: 10,
     },
 });

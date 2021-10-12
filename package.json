@@ -17,10 +17,14 @@
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+        "react-native-chart-kit": "^6.11.0",
         "react-native-dropdown-picker": "^5.1.28",
+        "react-native-paper": "^4.9.2",
+        "react-native-svg": "^12.1.1",
         "react-native-web": "~0.13.12",
         "react-pretty-numbers": "^3.0.0",
-        "tailwind-rn": "^3.0.1"
+        "tailwind-rn": "^3.0.1",
+        "victory-native": "^35.5.5"
     },
     "devDependencies": {
         "@babel/core": "^7.9.0"
